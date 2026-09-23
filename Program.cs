@@ -4,31 +4,29 @@ using Swashbuckle.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 讀取 Railway 傳入的 PORT 環境變數（預設為 8080）
+// 1. 綁定 Railway 動態 PORT (預設 8080)
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
 builder.WebHost.UseUrls($"http://*:{port}");
+
+// 2. 取得連線字串
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+// 3. 使用固定版本號，避免 AutoDetect 連線失敗導致程式崩潰
+var serverVersion = new MySqlServerVersion(new Version(8, 0, 36));
+
+builder.Services.AddDbContext<AspnetmvcContext>(options =>
+    options.UseMySql(connectionString, serverVersion));
 
 // 註冊控制器與 Swagger
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// 註冊 DbContext 資料庫內容類別
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<AspnetmvcContext>(options =>
-    options.UseMySql(
-        builder.Configuration.GetConnectionString("DefaultConnection"),
-        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
-    ));
-
 var app = builder.Build();
 
-// 開發環境啟用 Swagger UI 頁面
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// 啟用 Swagger 介面
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.MapControllers();
 app.Run();
