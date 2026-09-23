@@ -240,9 +240,9 @@ public partial class AspnetmvcContext : DbContext
     {
         modelBuilder.Entity<AboutU>(entity =>
         {
-            entity.HasKey(e => e.Id).IsClustered(false);
+            entity.HasKey(e => e.Id);
 
-            entity.HasIndex(e => e.HeaderName, "IX_AboutUs_name").IsClustered();
+            entity.HasIndex(e => e.HeaderName, "IX_AboutUs_name");
 
             entity.Property(e => e.Description).HasMaxLength(500);
             entity.Property(e => e.DetailText).HasMaxLength(500);
@@ -253,7 +253,7 @@ public partial class AspnetmvcContext : DbContext
 
         modelBuilder.Entity<AboutUsDetail>(entity =>
         {
-            entity.HasKey(e => e.Id).IsClustered(false);
+            entity.HasKey(e => e.Id);
 
             entity.HasIndex(e => new { e.SortNo, e.ItemName }, "IX_AboutUsDetails_sort_name").IsClustered();
 
@@ -264,7 +264,7 @@ public partial class AspnetmvcContext : DbContext
 
         modelBuilder.Entity<AddressBook>(entity =>
         {
-            entity.HasKey(e => e.Id).IsClustered(false);
+            entity.HasKey(e => e.Id);
 
             entity.HasIndex(e => new { e.UserNo, e.CodeNo }, "IX_AddressBooks_uno_no").IsClustered();
 
@@ -1969,7 +1969,7 @@ public partial class AspnetmvcContext : DbContext
         {
             entity.HasKey(e => e.Id)
                 .HasName("PK_RoleUsers")
-                .IsClustered(false);
+                ;
 
             entity.HasIndex(e => new { e.RoleNo, e.UserNo }, "IX_WorkflowRoleUsers_rno_uno").IsClustered();
 
@@ -1981,7 +1981,7 @@ public partial class AspnetmvcContext : DbContext
 
         modelBuilder.Entity<WorkflowRoute>(entity =>
         {
-            entity.HasKey(e => e.Id).IsClustered(false);
+            entity.HasKey(e => e.Id);
 
             entity.HasIndex(e => new { e.PrgNo, e.RouteOrder }, "IX_WorkflowRoutes_pno_rorder").IsClustered();
 
