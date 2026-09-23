@@ -1,5 +1,6 @@
 using ErpSystem.Core.Entities;
 using Microsoft.EntityFrameworkCore;
+using Swashbuckle.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
