@@ -4,6 +4,10 @@ using Swashbuckle.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// 讀取 Railway 傳入的 PORT 環境變數（預設為 8080）
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+builder.WebHost.UseUrls($"http://*:{port}");
+
 // 註冊控制器與 Swagger
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
