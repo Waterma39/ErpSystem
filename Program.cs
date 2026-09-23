@@ -11,7 +11,10 @@ builder.Services.AddSwaggerGen();
 // 註冊 DbContext 資料庫內容類別
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AspnetmvcContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseMySql(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
+    ));
 
 var app = builder.Build();
 
