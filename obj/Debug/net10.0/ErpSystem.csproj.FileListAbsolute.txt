@@ -167,3 +167,4 @@ C:\Users\許時睿\ErpSystem\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Wo
 C:\Users\許時睿\ErpSystem\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\許時睿\ErpSystem\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\許時睿\ErpSystem\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\許時睿\ErpSystem\obj\Debug\net10.0\ErpSystem.sourcelink.json
