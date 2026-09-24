@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // 1. 綁定 Railway 動態 PORT (預設 8080)
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
-builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+builder.WebHost.UseUrls($"http://0.0.0.0:{8080}");
 
 // 2. 取得連線字串與設定 MySQL
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
