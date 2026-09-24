@@ -23,13 +23,7 @@ var app = builder.Build();
 // 強制在所有環境啟用開發者例外頁面
 app.UseDeveloperExceptionPage();
 
-app.UseSwagger();
-app.UseSwaggerUI();
-
-app.MapControllers();
-app.Run();
-
-// 3. 自動建立資料庫結構（若 Table 不存在則自動建表）
+// 3. 自動建立資料庫結構 (必須在 app.Run() 之前執行)
 using (var scope = app.Services.CreateScope())
 {
     try
@@ -43,9 +37,11 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-// 4. 啟用 Swagger UI 方便 API 測試與除錯
+// 4. 啟用 Swagger 與 Routing
 app.UseSwagger();
 app.UseSwaggerUI();
 
 app.MapControllers();
+
+// 5. 啟動 Web 服務 (必須放在最後一行)
 app.Run();
