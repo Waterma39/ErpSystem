@@ -1,10 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+<PropertyGroup>
+  <TargetFramework>net9.0</TargetFramework>
+  <Nullable>enable</Nullable>
+  <ImplicitUsings>enable</ImplicitUsings>
+  <!-- 新增：允許程式自動向上相容容器中的 .NET 執行階段 -->
+  <RollForward>LatestMajor</RollForward>
+</PropertyGroup>
 
   <ItemGroup>
     <!-- API 文件 Swagger 套件 -->
