@@ -54,7 +54,7 @@ public class DbExplorerController : ControllerBase
         await connection.OpenAsync();
 
         using var command = connection.CreateCommand();
-        command.CommandText = $"SELECT * FROM [{targetTableName}]";
+        command.CommandText = $"SELECT * FROM `{targetTableName}`";
         using var reader = await command.ExecuteReaderAsync();
 
         var result = new List<Dictionary<string, object?>>();
