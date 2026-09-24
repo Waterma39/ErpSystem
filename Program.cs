@@ -20,6 +20,15 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+// 強制在所有環境啟用開發者例外頁面
+app.UseDeveloperExceptionPage();
+
+app.UseSwagger();
+app.UseSwaggerUI();
+
+app.MapControllers();
+app.Run();
+
 // 3. 自動建立資料庫結構（若 Table 不存在則自動建表）
 using (var scope = app.Services.CreateScope())
 {
